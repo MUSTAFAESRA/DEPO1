@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sosyal Medya Yöneticisi</title>
+    <style>
+        :root {
+            --primary: #4a6bff;
+            --primary-dark: #3a56cc;
+            --secondary: #ff6b4a;
+            --dark: #333;
+            --light: #f5f5f5;
+            --gray: #888;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary);
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: var(--primary-dark);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .hero {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #f5f7ff 0%, #e3e8ff 100%);
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+        
+        .hero p {
+            font-size: 20px;
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto 40px;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        
+        .features {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title h2 {
+            font-size: 36px;
+            color: var(--dark);
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            color: var(--gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-card {
+            background-color: var(--light);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background-color: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        
+        .feature-icon i {
+            color: white;
+            font-size: 24px;
+        }
+        
+        .feature-card h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        
+        .feature-card p {
+            color: var(--gray);
+        }
+        
+        .platforms {
+            padding: 80px 0;
+            background-color: var(--light);
+        }
+        
+        .platforms-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .platform-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+        
+        .platform-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .platform-logo {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+        }
+        
+        .platform-logo i {
+            font-size: 48px;
+        }
+        
+        .platform-card h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+        
+        .platform-card p {
+            color: var(--gray);
+            font-size: 14px;
+        }
+        
+        .cta {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #4a6bff 0%, #6b4aff 100%);
+            color: white;
+            text-align: center;
+        }
+        
+        .cta h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        
+        .cta p {
+            font-size: 18px;
+            max-width: 600px;
+            margin: 0 auto 40px;
+            opacity: 0.9;
+        }
+        
+        .cta .btn {
+            background-color: white;
+            color: var(--primary);
+            font-size: 18px;
+            padding: 15px 30px;
+        }
+        
+        .cta .btn:hover {
+            background-color: rgba(255, 255, 255, 0.9);
+        }
+        
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: white;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: white;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.5);
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">SosyalMedyaYöneticisi</a>
+                <ul class="nav-links">
+                    <li><a href="#features">Özellikler</a></li>
+                    <li><a href="#platforms">Platformlar</a></li>
+                    <li><a href="#pricing">Fiyatlandırma</a></li>
+                    <li><a href="#contact">İletişim</a></li>
+                    <li><a href="#" class="btn btn-outline">Giriş Yap</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Tüm Sosyal Medya Hesaplarınızı<br>Tek Yerden Yönetin</h1>
+            <p>Facebook, Instagram, Twitter ve LinkedIn hesaplarınızı tek bir platformdan yönetin, içerik planlayın ve reklam kampanyalarınızı optimize edin.</p>
+            <div class="hero-buttons">
+                <a href="#" class="btn">Ücretsiz Deneyin</a>
+                <a href="#" class="btn btn-outline">Demo İzleyin</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>Öne Çıkan Özellikler</h2>
+                <p>Sosyal medya yönetimini kolaylaştıran ve reklam performansınızı artıran güçlü özellikler</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i>📱</i>
+                    </div>
+                    <h3>Çoklu Hesap Yönetimi</h3>
+                    <p>Tüm sosyal medya hesaplarınızı tek bir panelden yönetin, içerik paylaşın ve etkileşimleri takip edin.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i>📅</i>
+                    </div>
+                    <h3>İçerik Planlama</h3>
+                    <p>İçeriklerinizi önceden hazırlayın, takvime göre planlayın ve otomatik olarak yayınlanmasını sağlayın.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i>📊</i>
+                    </div>
+                    <h3>Detaylı Analitikler</h3>
+                    <p>Paylaşımlarınızın ve reklamlarınızın performansını ölçün, raporlar oluşturun ve stratejinizi optimize edin.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i>🎯</i>
+                    </div>
+                    <h3>Reklam Yönetimi</h3>
+                    <p>Tüm platformlarda reklam kampanyaları oluşturun, bütçenizi yönetin ve sonuçları analiz edin.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="platforms" id="platforms">
+        <div class="container">
+            <div class="section-title">
+                <h2>Desteklenen Platformlar</h2>
+                <p>Tüm popüler sosyal medya platformlarıyla entegrasyon</p>
+            </div>
+            <div class="platforms-grid">
+                <div class="platform-card">
+                    <div class="platform-logo">
+                        <i style="color: #1877F2;">f</i>
+                    </div>
+                    <h3>Facebook</h3>
+                    <p>Sayfalarınızı yönetin, içerik paylaşın ve reklam kampanyaları oluşturun.</p>
+                </div>
+                <div class="platform-card">
+                    <div class="platform-logo">
+                        <i style="color: #E1306C;">📸</i>
+                    </div>
+                    <h3>Instagram</h3>
+                    <p>Görsel içeriklerinizi planlayın, hikayeler oluşturun ve etkileşimleri yönetin.</p>
+                </div>
+                <div class="platform-card">
+                    <div class="platform-logo">
+                        <i style="color: #1DA1F2;">🐦</i>
+                    </div>
+                    <h3>Twitter</h3>
+                    <p>Tweet'lerinizi planlayın, etkileşimleri takip edin ve reklam kampanyaları oluşturun.</p>
+                </div>
+                <div class="platform-card">
+                    <div class="platform-logo">
+                        <i style="color: #0A66C2;">in</i>
+                    </div>
+                    <h3>LinkedIn</h3>
+                    <p>Profesyonel içeriklerinizi yönetin, bağlantılarınızı genişletin ve reklam verin.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta">
+        <div class="container">
+            <h2>Sosyal Medya Yönetiminizi Hemen Kolaylaştırın</h2>
+            <p>14 gün ücretsiz deneme ile başlayın, kredi kartı gerekmez.</p>
+            <a href="#" class="btn">Hemen Başlayın</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Ürün</h3>
+                    <ul>
+                        <li><a href="#">Özellikler</a></li>
+                        <li><a href="#">Fiyatlandırma</a></li>
+                        <li><a href="#">Entegrasyonlar</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Kaynaklar</h3>
+                    <ul>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Kılavuzlar</a></li>
+                        <li><a href="#">Destek</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Şirket</h3>
+                    <ul>
+                        <li><a href="#">Hakkımızda</a></li>
+                        <li><a href="#">İletişim</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 SosyalMedyaYöneticisi. Tüm hakları saklıdır.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
